@@ -12,13 +12,10 @@ def ask(query: str) -> tuple[str, str]:
     from router import router
     from faq import faq_chain
     from sql import sql_chain
-    from small_talk import talk
 
     route = router(query).name
     if route == "faq":
         return faq_chain(query), "faq"
     if route == "sql":
         return sql_chain(query), "sql"
-    if route == "small_talk":
-        return talk(query), "small_talk"
     return UNKNOWN_RESPONSE, "unknown"

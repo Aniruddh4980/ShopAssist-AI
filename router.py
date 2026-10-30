@@ -1,11 +1,11 @@
-from semantic_router import Route
-from semantic_router.routers import SemanticRouter
+from semantic_router import Route, IndexedRouter
+# from semantic_router.routers import SemanticRouter
 from semantic_router.encoders import HuggingFaceEncoder
-from semantic_router.index import LocalIndex
+# from semantic_router.index import LocalIndex
 
 encoder = HuggingFaceEncoder(
     name="sentence-transformers/all-MiniLM-L12-v2",
-    device="cuda"
+    device="cpu"
 )
 
 faq = Route(
@@ -35,10 +35,9 @@ sql = Route(
     ]
 )
 
-index = LocalIndex()
+# index = LocalIndex()
 
-router = SemanticRouter(routes=[faq, sql], encoder=encoder, index=index, auto_sync='local')
-router.set_threshold(threshold=0.4)
+router = IndexedRouter(routes=[faq, sql], encoder=encoder)
 
 if __name__ == "__main__":
     print(router("What is your policy on defective product?").name)

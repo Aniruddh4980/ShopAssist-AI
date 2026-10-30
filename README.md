@@ -14,7 +14,7 @@ ShopAssist AI is a Streamlit chatbot that answers product questions and store su
 
 ![ShopAssist AI system architecture](docs/images/sys_arch.png)
 
-The semantic router uses `sentence-transformers/all-MiniLM-L12-v2` with a similarity threshold of `0.4`.
+The semantic router uses `sentence-transformers/all-MiniLM-L12-v2`.
 
 - **FAQ:** Retrieves relevant question and answer entries from ChromaDB, then asks Groq to formulate a response from that context. Source entries are in `resources/faq_data.csv`.
 - **Product search:** Asks Groq to generate SQL, runs it against `resources/db_amazon.sqlite`, then asks Groq to summarize the records.
@@ -32,7 +32,6 @@ The chatbot uses the SQLite catalog included in `resources/db_amazon.sqlite` at 
 - Python 3.12 or newer (`.python-version` currently selects Python 3.13.5)
 - [uv](https://docs.astral.sh/uv/)
 - A Groq API key and a model name available to your account
-- CUDA support for the semantic encoder as currently configured in `router.py`
 
 ## Setup
 
@@ -51,7 +50,7 @@ GROQ_MODEL=your_groq_model_name
 
 Keep the key private; do not commit `.env`.
 
-The first run may download the sentence-transformer model. `router.py` currently sets the encoder device to `cuda`. For a CPU-only machine, change `device="cuda"` to `device="cpu"` in `router.py` before running; inference may be slower.
+The first run may download the sentence-transformer model. `router.py` currently sets the encoder device to `cpu`.
 
 ## Run the app
 
