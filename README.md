@@ -2,6 +2,8 @@
 
 ShopAssist AI is a Streamlit chatbot that answers product questions and store support questions. A semantic router selects between two workflows: product catalog search and policy or FAQ retrieval.
 
+![Product catalog data preparation](docs/images/ShopAssist_UI.png)
+
 ## Features
 
 - Search products using criteria such as brand, price, rating, and discount.
