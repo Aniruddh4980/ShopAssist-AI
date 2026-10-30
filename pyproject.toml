@@ -1,0 +1,27 @@
+[project]
+name = "app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aniruddh Galande", email = "aniruddhgalande94@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.5.9",
+    "groq>=1.7.0",
+    "pandas>=3.1.0",
+    "pandasql>=0.7.3",
+    "pytest>=9.2.0",
+    "python-dotenv>=1.2.4",
+    "semantic-router[local]>=1.1.1",
+    "sentence-transformers>=6.2.0",
+    "streamlit>=1.66.1",
+]
+
+[project.scripts]
+app = "app:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
